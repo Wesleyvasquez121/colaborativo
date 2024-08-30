@@ -1,4 +1,6 @@
 class Empleado:
+ # Constructor de la clase Empleado
+
     def __init__(self, nombre, tipo, salario_base=0, horas_trabajadas=0, comisiones=0, años_trabajados=0):
         self.nombre = nombre
         self.tipo = tipo
@@ -6,6 +8,8 @@ class Empleado:
         self.horas_trabajadas = horas_trabajadas
         self.comisiones = comisiones
         self.años_trabajados = años_trabajados
+
+ # Método para calcular el pago del empleado basado en su tipo y otros factores
 
     def calcular_pago(self):
         if self.tipo == "fijo":
@@ -19,14 +23,16 @@ class Empleado:
             pago += 100  # Bono adicional
 
         return pago
-
+        
+# Función para generar la planilla de pago de los empleados
 def generar_planilla(empleados):
     print("Planilla de Pago:")
     for empleado in empleados:
         pago = empleado.calcular_pago()
         print(f"Empleado: {empleado.nombre}, Pago: ${pago}")
 
-# Ejemplo de uso
+# Ejemplo de uso de la clase Empleado y la función generar_planilla
+
 empleados = [
     Empleado(nombre="Juan", tipo="fijo", salario_base=1000, comisiones=200, años_trabajados=6),
     Empleado(nombre="Ana", tipo="horas", salario_base=15, horas_trabajadas=160, años_trabajados=3),
