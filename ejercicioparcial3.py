@@ -9,6 +9,7 @@ como el uso de la piscina o la cancha de golf, que tienen un costo
 adicional. Implementa esta funcionalidad en tu programa"""
 
 class Hotel:
+    # Constructor de la clase Hotel
     def __init__(self):
         self.habitaciones = {
             "Sencilla": 50,
@@ -19,19 +20,21 @@ class Hotel:
             "Piscina": 10,
             "Cancha de Golf": 20
         }
-
+ # Método para mostrar las opciones de habitaciones disponibles
     def mostrar_habitaciones(self):
         print("Opciones de habitaciones disponibles:")
         for habitacion, precio in self.habitaciones.items():
             print(f"{habitacion}: ${precio} por noche")
 
+ # Método para calcular el total a pagar por la habitación y servicios extra
     def calcular_total(self, habitacion, noches, extras):
         total = self.habitaciones[habitacion] * noches
         for extra in extras:
             total += self.servicios_extra[extra]
         return total
-
-    def generar_factura(self, nombre, habitacion, noches, extras):
+        
+    # Método para generar la factura del cliente
+ def generar_factura(self, nombre, habitacion, noches, extras):
         total = self.calcular_total(habitacion, noches, extras)
         print("\nFactura detallada:")
         print(f"Cliente: {nombre}")
@@ -40,11 +43,13 @@ class Hotel:
         for extra in extras:
             print(f"Servicio extra: {extra} - ${self.servicios_extra[extra]}")
         print(f"Total a pagar: ${total}")
-
+# Función principal del programa
 def main():
     hotel = Hotel()
     hotel.mostrar_habitaciones()
-    
+
+        # Solicitamos los datos al usuario
+
     nombre = input("Ingrese su nombre: ")
     habitacion = input("Elija una habitación: ")
     noches = int(input("Número de noches: "))
@@ -58,8 +63,10 @@ def main():
             extras.append(extra)
         else:
             print("Servicio no disponible.")
-    
+        # Generamos la factura para el cliente
+
     hotel.generar_factura(nombre, habitacion, noches, extras)
 
+# Punto de entrada del programa
 if __name__ == "__main__":
     main()
